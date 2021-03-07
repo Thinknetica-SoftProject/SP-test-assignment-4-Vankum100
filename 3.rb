@@ -10,4 +10,14 @@
 #
 ## Решение:
 
+def find_code(data)
+    line_maxs = []
+    data.each_line do |line|
+        line = line.split(' ')
+        line = line.map{|item| item.to_i }
+        line_maxs[line_maxs.length] = line.max - line.min
+    end
+    return line_maxs.inject(:+)
+end
 
+puts find_code(File.read('data/3.txt'))

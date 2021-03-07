@@ -16,4 +16,22 @@
 #
 ## Решение:
 
+def paper_sum(data)
+    total = 0
+    line = 0
+    data.each_line do | sides|
+        
+        sides = sides.split('x')
+        sides = sides.map { |item| item.to_i }
+        #puts sides
+       
+        current_sum_sides = sides.inject(:+) 
+        #puts "sum sides current line " + current_sum_sides.to_s
+        total += 2 * current_sum_sides + sides.min
+        #puts "current total " + total.to_s
+        
+    end
+    return total
+end
 
+puts paper_sum(File.read('data/4.txt'))

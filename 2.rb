@@ -16,3 +16,18 @@
 #
 ## Решение:
 
+
+require 'digest/md5'
+
+def mining_result(input)
+    num = 0
+    loop do 
+        hash_value = Digest::MD5.hexdigest(input + num.to_s)
+        hash_value[0,5] == "00000" ? break : num += 1
+    end
+    return num
+end 
+
+input = gets.strip
+
+puts mining_result(input)
